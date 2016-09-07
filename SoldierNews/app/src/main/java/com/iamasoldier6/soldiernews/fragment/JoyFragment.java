@@ -121,7 +121,6 @@ public class JoyFragment extends Fragment {
         StringRequest stringrequest = new StringRequest(Constant.JOY_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                // Log.i("tyq",response);
                 NewsBiz.getFeed(response, new OnparseListener() {
                     @Override
                     public void onParseSuccess(List<NewsItem> list) {
