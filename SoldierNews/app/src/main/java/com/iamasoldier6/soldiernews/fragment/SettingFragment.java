@@ -25,8 +25,9 @@ import java.text.DecimalFormat;
  * Created by iamasoldier6 on 2015/11/26.
  */
 public class SettingFragment extends Fragment {
-    private Button clear_btn;
-    private TextView clear_tv;
+
+    private Button clearBtn;
+    private TextView clearTxt;
     private DialogHandler handler;
 
     @Override
@@ -55,13 +56,13 @@ public class SettingFragment extends Fragment {
         if (Float.parseFloat(totalCacheSize) < 0.10f) totalCacheSize = "0.00";
         String str = totalCacheSize + "MB";
 
-        clear_tv.setText(str);
+        clearTxt.setText(str);
     }
 
     private void initViews(View view) {
-        clear_btn = (Button) view.findViewById(R.id.clear_btn);
-        clear_tv = (TextView) view.findViewById(R.id.clear_tv);
-        clear_btn.setOnClickListener(new View.OnClickListener() {
+        clearBtn = (Button) view.findViewById(R.id.clear_btn);
+        clearTxt = (TextView) view.findViewById(R.id.clear_tv);
+        clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String title = "确认清除吗？";
@@ -102,7 +103,7 @@ public class SettingFragment extends Fragment {
                 dialog.dismiss();
                 Toast.makeText(getActivity(), "清除成功", Toast.LENGTH_SHORT).show();
                 String str = "0.00MB";
-                clear_tv.setText(str);
+                clearTxt.setText(str);
             }
         }
     }

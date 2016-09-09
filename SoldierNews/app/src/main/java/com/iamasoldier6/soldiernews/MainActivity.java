@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private String[] drawerTitles = {"科技", "娱乐", "设置"};
     private List<Fragment> fragmentList;
     private Class[] classes = {TechFragment.class, JoyFragment.class, SettingFragment.class};
-    private ImageView photo_iv;
-    private TextView login_text;
+    private ImageView photoImg;
+    private TextView loginTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void selectItem(int position) {
+
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
         for (Fragment fragment : fragmentList) {
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.hide(fragment);
             }
         }
+
         Fragment fragment;
         if (fragmentList.get(position) == null) {
             Bundle bundle = new Bundle();
@@ -102,9 +104,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDrawerContent(NavigationView mNavigationView) {
+
         View header = LayoutInflater.from(this).inflate(R.layout.navigation_header, null);
-        photo_iv = (ImageView) header.findViewById(R.id.photo_iv);
-        photo_iv.setOnClickListener(new View.OnClickListener() {
+        photoImg = (ImageView) header.findViewById(R.id.photo_iv);
+        photoImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!UserProxy.isLogin(MainActivity.this)) {
@@ -116,14 +119,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        login_text = (TextView) header.findViewById(R.id.login_tv);
+        loginTxt = (TextView) header.findViewById(R.id.login_tv);
         if (UserProxy.isLogin(this)) {
             User user = UserProxy.getCurrentUser(this);
-            login_text.setText(user.getUsername());
+            loginTxt.setText(user.getUsername());
         }
 
         mNavigationView.addHeaderView(header);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
