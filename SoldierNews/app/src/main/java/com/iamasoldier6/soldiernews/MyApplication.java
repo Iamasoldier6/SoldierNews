@@ -58,7 +58,6 @@ public class MyApplication extends Application {
 
     public DisplayImageOptions getOptions() {
         return new DisplayImageOptions.Builder()
-
                 .showImageOnLoading(R.drawable.app_logo)
                 .showImageForEmptyUri(R.drawable.app_logo)
                 .showImageOnFail(R.drawable.app_logo)
@@ -77,8 +76,8 @@ public class MyApplication extends Application {
                 .showImageOnFail(defaultImgResourceId)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
-                .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2) // default
-                .bitmapConfig(Bitmap.Config.RGB_565) // default
+                .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
+                .bitmapConfig(Bitmap.Config.RGB_565)
                 .displayer(new FadeInBitmapDisplayer(300))
                 .build();
     }
@@ -90,8 +89,8 @@ public class MyApplication extends Application {
                 .showImageOnFail(R.drawable.app_logo)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
-                .imageScaleType(ImageScaleType.IN_SAMPLE_INT) // default
-                .bitmapConfig(Bitmap.Config.RGB_565) // default
+                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
+                .bitmapConfig(Bitmap.Config.RGB_565) 
                 .displayer(new FadeInBitmapDisplayer(300))
                 .displayer(new RoundedBitmapDisplayer(8))
                 .build();
