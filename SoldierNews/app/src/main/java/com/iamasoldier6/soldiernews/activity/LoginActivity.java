@@ -14,13 +14,16 @@ import com.iamasoldier6.soldiernews.view.LoadingDialog;
 
 import cn.bmob.v3.Bmob;
 
+import static com.iamasoldier6.soldiernews.R.id.login_btn;
+import static com.iamasoldier6.soldiernews.R.id.register_btn;
+
 /**
  * Created by iamasoldier6 on 2015/11/22.
  */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DeletableEditText username_et, password_et;
-    private Button login_btn, register_btn;
+    private DeletableEditText usernameEt, passwordEt;
+    private Button loginBtn, registerBtn;
     private LoadingDialog dialog;
     private String username, password;
 
@@ -40,27 +43,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initView() {
-        username_et = (DeletableEditText) findViewById(R.id.login_username_et);
-        password_et = (DeletableEditText) findViewById(R.id.login_password_et);
-        login_btn = (Button) findViewById(R.id.login_btn);
-        register_btn = (Button) findViewById(R.id.register_btn);
+        usernameEt = (DeletableEditText) findViewById(R.id.login_username_et);
+        passwordEt = (DeletableEditText) findViewById(R.id.login_password_et);
+        loginBtn = (Button) findViewById(login_btn);
+        registerBtn = (Button) findViewById(register_btn);
         dialog = new LoadingDialog();
         dialog.setParams("请稍等...");
 
-        login_btn.setOnClickListener(this);
-        register_btn.setOnClickListener(this);
+        loginBtn.setOnClickListener(this);
+        registerBtn.setOnClickListener(this);
     }
 
     private boolean isUserComplete() {
-        username = username_et.getText().toString();
-        password = password_et.getText().toString();
+        username = usernameEt.getText().toString();
+        password = passwordEt.getText().toString();
         if (username == null) {
-            username_et.setShakeAnimation();
+            usernameEt.setShakeAnimation();
             Toast.makeText(this, "请填写用户名", Toast.LENGTH_SHORT);
             return false;
         }
         if (password == null) {
-            password_et.setShakeAnimation();
+            passwordEt.setShakeAnimation();
             Toast.makeText(this, "请填写密码", Toast.LENGTH_SHORT);
             return false;
         }
@@ -70,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.login_btn:
+            case login_btn:
                 if (loginOrRegister == LoginOrRegister.LOGIN) {
                     if (!isUserComplete()) return;
                     dialog.show(getFragmentManager(), "loading");
@@ -110,13 +113,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     });
                 }
                 break;
-            case R.id.register_btn:
+            case register_btn:
                 if (loginOrRegister == LoginOrRegister.LOGIN) {
                     loginOrRegister = LoginOrRegister.REGISTER;
-                    register_btn.setText("登录");
+                    registerBtn.setText("登录");
                 } else if (loginOrRegister == LoginOrRegister.REGISTER) {
                     loginOrRegister = LoginOrRegister.LOGIN;
-                    register_btn.setText("注册帐号");
+                    registerBtn.setText("注册帐号");
                 }
                 updateLayout(loginOrRegister);
                 break;
@@ -125,9 +128,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void updateLayout(LoginOrRegister loginOrRegister) {
         if (loginOrRegister == LoginOrRegister.LOGIN) {
-            login_btn.setText("登录");
+            loginBtn.setText("登录");
         } else if (loginOrRegister == LoginOrRegister.REGISTER) {
-            login_btn.setText("注册");
+            loginBtn.setText("注册");
         }
     }
 }
