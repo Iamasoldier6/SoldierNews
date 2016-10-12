@@ -12,7 +12,7 @@ import com.iamasoldier6.soldiernews.bean.Constant;
 import com.iamasoldier6.soldiernews.bean.NewsItem;
 
 /**
- * Created by iamasoldier6 on 2015/11/18.
+ * Created by Iamasoldier6 on 2015/11/18.
  */
 public class DetailActivity extends AppCompatActivity {
 

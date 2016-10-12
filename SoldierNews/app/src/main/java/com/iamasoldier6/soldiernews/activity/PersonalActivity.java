@@ -17,19 +17,24 @@ import com.iamasoldier6.soldiernews.view.ConfirmDialog;
 import com.iamasoldier6.soldiernews.view.EditTextDialog;
 import com.iamasoldier6.soldiernews.view.LoadingDialog;
 
+import static com.iamasoldier6.soldiernews.R.id.tv_nickname;
+import static com.iamasoldier6.soldiernews.R.id.tv_sex;
+
 /**
- * Created by iamasoldier6 on 2015/11/25.
+ * Created by Iamasoldier6 on 2015/11/25.
  */
+
 public class PersonalActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView tv_UserName;
-    private Button btn_NickName;
-    private Button btn_Sex;
-    private Button btn_Signature;
-    private Button btn_logout;
-    private TextView tv_nickname;
-    private TextView tv_sex;
+
+    private TextView usernameTxt;
+    private Button nickNameBtn;
+    private Button sexBtn;
+    private Button signatureBtn;
+    private Button logoutBtn;
+    private TextView nicknameTxt;
+    private TextView sexTxt;
     private LoadingDialog loadingDialog;
-    User user;
+    public User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +44,16 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
 
         user = UserProxy.getCurrentUser(this);
         if (user != null) {
-            tv_UserName.setText(user.getUsername());
+            usernameTxt.setText(user.getUsername());
         }
         setListener();
     }
 
     private void setListener() {
-        btn_NickName.setOnClickListener(this);
-        btn_Sex.setOnClickListener(this);
-        btn_Signature.setOnClickListener(this);
-        btn_logout.setOnClickListener(this);
+        nickNameBtn.setOnClickListener(this);
+        sexBtn.setOnClickListener(this);
+        signatureBtn.setOnClickListener(this);
+        logoutBtn.setOnClickListener(this);
     }
 
     private void initViews() {
@@ -58,13 +63,13 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         loadingDialog = new LoadingDialog();
 
-        tv_UserName = (TextView) findViewById(R.id.username);
-        tv_nickname = (TextView) findViewById(R.id.tv_nickname);
-        tv_sex = (TextView) findViewById(R.id.tv_sex);
-        btn_NickName = (Button) findViewById(R.id.nickname_btn);
-        btn_Sex = (Button) findViewById(R.id.sex_btn);
-        btn_Signature = (Button) findViewById(R.id.signature_btn);
-        btn_logout = (Button) findViewById(R.id.logout_btn);
+        usernameTxt = (TextView) findViewById(R.id.username);
+        nicknameTxt = (TextView) findViewById(tv_nickname);
+        sexTxt = (TextView) findViewById(tv_sex);
+        nickNameBtn = (Button) findViewById(R.id.nickname_btn);
+        sexBtn = (Button) findViewById(R.id.sex_btn);
+        signatureBtn = (Button) findViewById(R.id.signature_btn);
+        logoutBtn = (Button) findViewById(R.id.logout_btn);
     }
 
     @Override
@@ -72,7 +77,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         EditTextDialog editTextDialog = new EditTextDialog();
         switch (v.getId()) {
             case R.id.nickname_btn:
-                editTextDialog.setParams(tv_nickname.getText().toString(), true, 20);
+                editTextDialog.setParams(nicknameTxt.getText().toString(), true, 20);
                 editTextDialog.setMyOnClickListener(new EditTextDialog.MyOnClickListener() {
                     @Override
                     public void onClick(String str) {
@@ -83,7 +88,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                             public void onSuccess() {
                                 loadingDialog.dismiss();
                                 Toast.makeText(PersonalActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
-                                tv_nickname.setText(user.getNickName());
+                                nicknameTxt.setText(user.getNickName());
                             }
 
                             @Override
@@ -107,7 +112,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                             @Override
                             public void onSuccess() {
                                 loadingDialog.dismiss();
-                                tv_sex.setText(user.getSex());
+                                sexTxt.setText(user.getSex());
                                 Toast.makeText(PersonalActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
                             }
 
