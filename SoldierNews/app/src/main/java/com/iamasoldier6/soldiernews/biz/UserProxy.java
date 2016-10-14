@@ -84,7 +84,7 @@ public class UserProxy {
     public static void upDataInfo(Context context, User user, String nickname, String sex, String signature, final UpdataInfo updataInfo) {
         if (user != null) {
             if (nickname != null) user.setNickName(nickname);
-            Log.i("tyq", user.getNickName());
+            Log.i("iamasoldier6", user.getNickName());
             if (sex != null) user.setSex(sex);
             if (signature != null) user.setSignature(signature);
             user.update(context, new UpdateListener() {
