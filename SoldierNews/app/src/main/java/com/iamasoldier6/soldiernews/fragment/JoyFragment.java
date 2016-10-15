@@ -32,19 +32,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.iamasoldier6.soldiernews.R.layout.item_list;
+
 /**
  * Created by iamasoldier6 on 2015/11/22.
  */
 public class JoyFragment extends Fragment {
 
-    private static final String TAG = "Fragement_yule";
+    private static final String TAG = "Fragement_Joy";
     private SwipeRefreshLayout mSrl;
     private RecyclerView mRecyclerView;
     private MyRecyclerAdapter adapter;
     private Button reloadBtn;
     private Handler mHandler = new Handler();
     private ACache mACache;
-    final List<NewsItem> item_list = new ArrayList<>();
+    final List<NewsItem> itemList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,7 +96,7 @@ public class JoyFragment extends Fragment {
         mSrl.setColorSchemeResources(com.iamasoldier6.soldiernews.R.color.colorPrimary, com.iamasoldier6.soldiernews.R.color.secondColor, com.iamasoldier6.soldiernews.R.color.purple, com.iamasoldier6.soldiernews.R.color.blue);
         //主要内容
         mRecyclerView = (RecyclerView) view.findViewById(com.iamasoldier6.soldiernews.R.id.recycler_content);
-        adapter = new MyRecyclerAdapter(getActivity(), item_list);
+        adapter = new MyRecyclerAdapter(getActivity(), itemList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -102,7 +104,7 @@ public class JoyFragment extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
-                intent.putExtra(Constant.NEWS_ITEM, item_list.get(position));
+                intent.putExtra(Constant.NEWS_ITEM, itemList.get(position));
                 startActivity(intent);
             }
         });
@@ -125,13 +127,13 @@ public class JoyFragment extends Fragment {
                     @Override
                     public void onParseSuccess(List<NewsItem> list) {
                         if (list != null) {
-                            item_list.clear();
-                            item_list.addAll(list);
+                            itemList.clear();
+                            itemList.addAll(list);
                             if (adapter != null) {
-                                adapter.updateData(item_list);
+                                adapter.updateData(itemList);
                             }
                             setViewVisible(false, true, false);
-                            mACache.put(TAG, convertToJson(item_list));
+                            mACache.put(TAG, convertToJson(itemList));
                         } else {
 
                         }
@@ -147,7 +149,7 @@ public class JoyFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                if (item_list == null) {
+                if (itemList == null) {
                     setViewVisible(false, false, true);
                 } else {
                     setViewVisible(false, true, false);
@@ -195,11 +197,11 @@ public class JoyFragment extends Fragment {
         if (jsonObj != null) {
             try {
                 JSONArray feedlistAr = jsonObj.getJSONArray("feed_list");
-                item_list.clear();
+                itemList.clear();
                 for (int i = 0; i < feedlistAr.length(); i++) {
                     JSONObject feedlist = feedlistAr.getJSONObject(i);
                     NewsItem item = NewsItem.parse(feedlist);
-                    item_list.add(item);
+                    itemList.add(item);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
