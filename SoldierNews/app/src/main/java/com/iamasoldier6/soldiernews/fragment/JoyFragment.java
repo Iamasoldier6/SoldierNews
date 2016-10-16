@@ -32,15 +32,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.iamasoldier6.soldiernews.R.layout.item_list;
-
 /**
  * Created by iamasoldier6 on 2015/11/22.
  */
 public class JoyFragment extends Fragment {
 
-    private static final String TAG = "Fragement_Joy";
-    private SwipeRefreshLayout mSrl;
+    private static final String TAG = "Fragment_Joy";
+    private SwipeRefreshLayout mRefreshLayout;
     private RecyclerView mRecyclerView;
     private MyRecyclerAdapter adapter;
     private Button reloadBtn;
@@ -82,7 +80,7 @@ public class JoyFragment extends Fragment {
     }
 
     private void setListener() {
-        mSrl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 loadData();
@@ -92,8 +90,8 @@ public class JoyFragment extends Fragment {
 
     private void initView(View view) {
         //下拉刷新
-        mSrl = (SwipeRefreshLayout) view.findViewById(com.iamasoldier6.soldiernews.R.id.srl_content);
-        mSrl.setColorSchemeResources(com.iamasoldier6.soldiernews.R.color.colorPrimary, com.iamasoldier6.soldiernews.R.color.secondColor, com.iamasoldier6.soldiernews.R.color.purple, com.iamasoldier6.soldiernews.R.color.blue);
+        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(com.iamasoldier6.soldiernews.R.id.srl_content);
+        mRefreshLayout.setColorSchemeResources(com.iamasoldier6.soldiernews.R.color.colorPrimary, com.iamasoldier6.soldiernews.R.color.secondColor, com.iamasoldier6.soldiernews.R.color.purple, com.iamasoldier6.soldiernews.R.color.blue);
         //主要内容
         mRecyclerView = (RecyclerView) view.findViewById(com.iamasoldier6.soldiernews.R.id.recycler_content);
         adapter = new MyRecyclerAdapter(getActivity(), itemList);
@@ -163,12 +161,12 @@ public class JoyFragment extends Fragment {
 
     public void setViewVisible(boolean mSrl, boolean mRecyclerView, boolean reloadBtn) {
         if (mSrl) {
-            if (this.mSrl != null) {
-                this.mSrl.setRefreshing(true);
+            if (this.mRefreshLayout != null) {
+                this.mRefreshLayout.setRefreshing(true);
             }
         } else {
-            if (this.mSrl != null) {
-                this.mSrl.setRefreshing(false);
+            if (this.mRefreshLayout != null) {
+                this.mRefreshLayout.setRefreshing(false);
             }
         }
         if (mRecyclerView) {
