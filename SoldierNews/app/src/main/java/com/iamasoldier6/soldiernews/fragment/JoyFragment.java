@@ -40,7 +40,7 @@ public class JoyFragment extends Fragment {
     private static final String TAG = "Fragment_Joy";
     private SwipeRefreshLayout mRefreshLayout;
     private RecyclerView mRecyclerView;
-    private MyRecyclerAdapter adapter;
+    private MyRecyclerAdapter mAdapter;
     private Button reloadBtn;
     private Handler mHandler = new Handler();
     private ACache mACache;
@@ -73,8 +73,8 @@ public class JoyFragment extends Fragment {
 
     private void loadCache() {
         if (covertToList()) {
-            if (adapter != null) {
-                adapter.notifyDataSetChanged();
+            if (mAdapter != null) {
+                mAdapter.notifyDataSetChanged();
             }
         }
     }
@@ -89,16 +89,17 @@ public class JoyFragment extends Fragment {
     }
 
     private void initView(View view) {
-        //下拉刷新
+        // 下拉刷新
         mRefreshLayout = (SwipeRefreshLayout) view.findViewById(com.iamasoldier6.soldiernews.R.id.srl_content);
         mRefreshLayout.setColorSchemeResources(com.iamasoldier6.soldiernews.R.color.colorPrimary, com.iamasoldier6.soldiernews.R.color.secondColor, com.iamasoldier6.soldiernews.R.color.purple, com.iamasoldier6.soldiernews.R.color.blue);
-        //主要内容
+        // 主要内容
         mRecyclerView = (RecyclerView) view.findViewById(com.iamasoldier6.soldiernews.R.id.recycler_content);
-        adapter = new MyRecyclerAdapter(getActivity(), itemList);
+        mAdapter = new MyRecyclerAdapter(getActivity(), itemList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter.setOnItemClickListener(new MyRecyclerAdapter.OnItemClickListener() {
+
+        mAdapter.setOnItemClickListener(new MyRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
@@ -106,7 +107,8 @@ public class JoyFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        mRecyclerView.setAdapter(adapter);
+
+        mRecyclerView.setAdapter(mAdapter);
 
         reloadBtn = (Button) view.findViewById(com.iamasoldier6.soldiernews.R.id.refresh_btn);
         reloadBtn.setOnClickListener(new View.OnClickListener() {
@@ -119,16 +121,18 @@ public class JoyFragment extends Fragment {
 
     public void loadData() {
         StringRequest stringrequest = new StringRequest(Constant.JOY_URL, new Response.Listener<String>() {
+
             @Override
             public void onResponse(String response) {
                 NewsBiz.getFeed(response, new OnparseListener() {
+
                     @Override
                     public void onParseSuccess(List<NewsItem> list) {
                         if (list != null) {
                             itemList.clear();
                             itemList.addAll(list);
-                            if (adapter != null) {
-                                adapter.updateData(itemList);
+                            if (mAdapter != null) {
+                                mAdapter.updateData(itemList);
                             }
                             setViewVisible(false, true, false);
                             mACache.put(TAG, convertToJson(itemList));
@@ -145,6 +149,7 @@ public class JoyFragment extends Fragment {
                 });
             }
         }, new Response.ErrorListener() {
+            
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 if (itemList == null) {
