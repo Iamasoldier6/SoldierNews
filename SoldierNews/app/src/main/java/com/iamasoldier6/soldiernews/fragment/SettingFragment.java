@@ -27,8 +27,8 @@ import java.text.DecimalFormat;
 public class SettingFragment extends Fragment {
 
     private Button clearBtn;
-    private TextView clearTxt;
-    private DialogHandler handler;
+    private TextView tvClear;
+    private DialogHandler mHandler;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,26 +43,27 @@ public class SettingFragment extends Fragment {
     }
 
     private void CacheSize() {
-        //内置存储cache
+        // 内置存储 cache
         double internalCacheSize = SDCardUtils.getDirSize(getActivity().getCacheDir());
-        //外置存储cache
+        // 外置存储 cache
         double externalCacheSize = 0;
         if (SDCardUtils.isSDCardEnable())
             externalCacheSize = SDCardUtils.getDirSize(getActivity().getExternalCacheDir());
-        //WebView的cache
+        // WebView 的c ache
         String totalCacheSize = new DecimalFormat("#.00").format(internalCacheSize + externalCacheSize);
         if (totalCacheSize.startsWith(".")) totalCacheSize = "0" + totalCacheSize;
-        //若总大小小于0.1MB，直接显示0.00MB
+        // 若总大小小于 0.1MB ，直接显示 0.00MB
         if (Float.parseFloat(totalCacheSize) < 0.10f) totalCacheSize = "0.00";
         String str = totalCacheSize + "MB";
 
-        clearTxt.setText(str);
+        tvClear.setText(str);
     }
 
     private void initViews(View view) {
         clearBtn = (Button) view.findViewById(R.id.clear_btn);
-        clearTxt = (TextView) view.findViewById(R.id.clear_tv);
+        tvClear = (TextView) view.findViewById(R.id.clear_tv);
         clearBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 String title = "确认清除吗？";
@@ -74,8 +75,8 @@ public class SettingFragment extends Fragment {
                         loadingDialog.setParams("请稍后...");
                         loadingDialog.show(getActivity().getFragmentManager(), "loading");
                         clearCache();
-                        handler = new DialogHandler(loadingDialog);
-                        handler.sendEmptyMessageDelayed(0, 1000);
+                        mHandler = new DialogHandler(loadingDialog);
+                        mHandler.sendEmptyMessageDelayed(0, 1000);
                     }
                 }, null);
                 confirmDialog.show(getActivity().getFragmentManager(), "confirm");
@@ -103,14 +104,14 @@ public class SettingFragment extends Fragment {
                 dialog.dismiss();
                 Toast.makeText(getActivity(), "清除成功", Toast.LENGTH_SHORT).show();
                 String str = "0.00MB";
-                clearTxt.setText(str);
+                tvClear.setText(str);
             }
         }
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        //当fragment显示时
+        // 当 fragment 显示时
         if (!hidden) {
             CacheSize();
         }
@@ -119,8 +120,8 @@ public class SettingFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (null != handler) {
-            handler.removeCallbacksAndMessages(null);
+        if (null != mHandler) {
+            mHandler.removeCallbacksAndMessages(null);
         }
     }
 }
