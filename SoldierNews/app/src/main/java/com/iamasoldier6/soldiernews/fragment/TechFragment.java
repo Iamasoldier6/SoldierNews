@@ -40,7 +40,7 @@ public class TechFragment extends Fragment {
     private static final String TAG = "Fragement_keji";
     private SwipeRefreshLayout mSrl;
     private RecyclerView mRecyclerView;
-    private MyRecyclerAdapter adapter;
+    private MyRecyclerAdapter mAdapter;
     private Button reloadBtn;
     final List<NewsItem> item_list = new ArrayList<>();
     // List<NewsItem> headlineList = new ArrayList<>();//头条内容
@@ -75,8 +75,8 @@ public class TechFragment extends Fragment {
 
     private void loadCache() {
         if (covertToList()) {
-            if (adapter != null) {
-                adapter.notifyDataSetChanged();
+            if (mAdapter != null) {
+                mAdapter.notifyDataSetChanged();
             }
         }
     }
@@ -96,13 +96,13 @@ public class TechFragment extends Fragment {
 
         headlinesView = new HeadlinesView(getActivity());
         mRecyclerView = (RecyclerView) view.findViewById(com.iamasoldier6.soldiernews.R.id.recycler_content);
-        adapter = new MyRecyclerAdapter(getActivity(), item_list);
+        mAdapter = new MyRecyclerAdapter(getActivity(), item_list);
         // mHeaderAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter.setOnItemClickListener(new MyRecyclerAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new MyRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
@@ -110,7 +110,7 @@ public class TechFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(mAdapter);
         //RecyclerViewUtils.setHeaderView(mRecyclerView, headlinesView);
         reloadBtn = (Button) view.findViewById(com.iamasoldier6.soldiernews.R.id.refresh_btn);
         reloadBtn.setOnClickListener(new View.OnClickListener() {
@@ -168,8 +168,8 @@ public class TechFragment extends Fragment {
                         if (list != null) {
                             item_list.clear();
                             item_list.addAll(list);
-                            if (adapter != null) {
-                                adapter.updateData(item_list);
+                            if (mAdapter != null) {
+                                mAdapter.updateData(item_list);
                             }
                             setViewVisible(false, true, false);
                             mACache.put(TAG, convertToJson(item_list));
