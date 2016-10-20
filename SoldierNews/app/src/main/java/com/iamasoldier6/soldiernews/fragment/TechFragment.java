@@ -43,11 +43,12 @@ public class TechFragment extends Fragment {
     private MyRecyclerAdapter mAdapter;
     private Button reloadBtn;
     final List<NewsItem> item_list = new ArrayList<>();
-    // List<NewsItem> headlineList = new ArrayList<>();//头条内容
+    // List<NewsItem> headlineList = new ArrayList<>();
+    // 头条内容
     private Handler mHandler = new Handler();
     private ACache mACache;
     private HeadlinesView headlinesView;
-    //上面头条滚动，因为图片不清晰，先取消了。
+    // 上面头条滚动，因为图片不清晰，先取消了。
     // private HeaderAndFooterRecyclerViewAdapter mHeaderAndFooterRecyclerViewAdapter = null;
 
     @Override
@@ -92,7 +93,9 @@ public class TechFragment extends Fragment {
 
     private void initView(View view) {
         mSrl = (SwipeRefreshLayout) view.findViewById(com.iamasoldier6.soldiernews.R.id.srl_content);
-        mSrl.setColorSchemeResources(com.iamasoldier6.soldiernews.R.color.colorPrimary, com.iamasoldier6.soldiernews.R.color.secondColor, com.iamasoldier6.soldiernews.R.color.purple, com.iamasoldier6.soldiernews.R.color.blue);
+        mSrl.setColorSchemeResources(com.iamasoldier6.soldiernews.R.color.colorPrimary,
+                com.iamasoldier6.soldiernews.R.color.secondColor, com.iamasoldier6.soldiernews.R.color.purple,
+                com.iamasoldier6.soldiernews.R.color.blue);
 
         headlinesView = new HeadlinesView(getActivity());
         mRecyclerView = (RecyclerView) view.findViewById(com.iamasoldier6.soldiernews.R.id.recycler_content);
@@ -110,6 +113,7 @@ public class TechFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        
         mRecyclerView.setAdapter(mAdapter);
         //RecyclerViewUtils.setHeaderView(mRecyclerView, headlinesView);
         reloadBtn = (Button) view.findViewById(com.iamasoldier6.soldiernews.R.id.refresh_btn);
