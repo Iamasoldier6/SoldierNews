@@ -39,19 +39,19 @@ public class DeletableEditText extends EditText {
     }
 
     private void init() {
-        //getCompoundDrawables:
-        //Returns drawables for the left, top, right, and bottom borders.
+        // getCompoundDrawables:
+        // Returns drawables for the left, top, right, and bottom borders.
         Drawable[] drawables = this.getCompoundDrawables();
 
-        //取得right位置的Drawable
-        //即我们在布局文件中设置的android:drawableRight
+        // 取得 right 位置的 Drawable
+        // 即我们在布局文件中设置的 android:drawableRight
         mRightDrawable = drawables[2];
 
-        //设置焦点变化的监听
+        // 设置焦点变化的监听
         this.setOnFocusChangeListener(new FocusChangeListenerImpl());
-        //设置EditText文字变化的监听
+        // 设置 EditText 文字变化的监听
         this.addTextChangedListener(new TextWatcherImpl());
-        //初始化时让右边clean图标不可见
+        // 初始化时让右边 clean 图标不可见
         setClearDrawableVisible(false);
     }
 
@@ -101,7 +101,7 @@ public class DeletableEditText extends EditText {
 
     }
 
-    //当输入结束后判断是否显示右边clean的图标
+    // 当输入结束后判断是否显示右边 clean 的图标
     private class TextWatcherImpl implements TextWatcher {
         @Override
         public void afterTextChanged(Editable s) {
@@ -121,7 +121,7 @@ public class DeletableEditText extends EditText {
 
     }
 
-    //隐藏或者显示右边clean的图标
+    // 隐藏或者显示右边 clean 的图标
     protected void setClearDrawableVisible(boolean isVisible) {
         Drawable rightDrawable;
         if (isVisible) {
@@ -129,18 +129,18 @@ public class DeletableEditText extends EditText {
         } else {
             rightDrawable = null;
         }
-        //使用代码设置该控件left, top, right, and bottom处的图标
+        // 使用代码设置该控件 left, top, right, and bottom 处的图标
         setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1],
                 rightDrawable, getCompoundDrawables()[3]);
     }
 
-    // 显示一个动画,以提示用户输入
+    // 显示一个动画, 以提示用户输入
     public void setShakeAnimation() {
         this.startAnimation(shakeAnimation(5));
 
     }
 
-    //CycleTimes动画重复的次数
+    // CycleTimes 动画重复的次数
     public Animation shakeAnimation(int CycleTimes) {
         Animation translateAnimation = new TranslateAnimation(0, 10, 0, 10);
         translateAnimation.setInterpolator(new CycleInterpolator(CycleTimes));
