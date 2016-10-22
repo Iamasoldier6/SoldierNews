@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private Toolbar mToolbar;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView mNavigationView;
@@ -79,16 +79,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_left);
 
-        toolbar.setTitle("界面");
+        mToolbar.setTitle("界面");
 
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.menu);
+        setSupportActionBar(mToolbar);
+        mToolbar.setNavigationIcon(R.drawable.menu);
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close) {
+        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, mToolbar, R.string.open, R.string.close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
