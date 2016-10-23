@@ -30,7 +30,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private DrawerLayout drawerLayout;
+    private DrawerLayout mLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView mNavigationView;
     private String[] drawerTitles = {"科技", "娱乐", "设置"};
@@ -81,14 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
-        drawerLayout = (DrawerLayout) findViewById(R.id.dl_left);
+        mLayout = (DrawerLayout) findViewById(R.id.dl_left);
 
         mToolbar.setTitle("界面");
 
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(R.drawable.menu);
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, mToolbar, R.string.open, R.string.close) {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mLayout, mToolbar, R.string.open, R.string.close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onDrawerClosed(drawerView);
             }
         };
-        drawerLayout.setDrawerListener(mDrawerToggle);
+        mLayout.setDrawerListener(mDrawerToggle);
         setupDrawerContent(mNavigationView);
     }
 
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 menuItem.setChecked(true);
-                drawerLayout.closeDrawers();
+                mLayout.closeDrawers();
                 return true;
             }
         });
