@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private DrawerLayout mLayout;
     private ActionBarDrawerToggle mDrawerToggle;
-    private NavigationView mNavigationView;
+    private NavigationView mView;
     private String[] drawerTitles = {"科技", "娱乐", "设置"};
     private List<Fragment> fragmentList;
     private Class[] classes = {TechFragment.class, JoyFragment.class, SettingFragment.class};
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        mView = (NavigationView) findViewById(R.id.navigation_view);
         mLayout = (DrawerLayout) findViewById(R.id.dl_left);
 
         mToolbar.setTitle("界面");
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         mLayout.setDrawerListener(mDrawerToggle);
-        setupDrawerContent(mNavigationView);
+        setupDrawerContent(mView);
     }
 
     private void setupDrawerContent(NavigationView mNavigationView) {
