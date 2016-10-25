@@ -22,21 +22,21 @@ import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 public class MyApplication extends Application {
 
     private static MyApplication myApplication;
-    private static RequestQueue requestQueue;
+    private static RequestQueue mQueue;
 
     public static MyApplication getInstance() {
         return myApplication;
     }
 
     public static RequestQueue getRequestQueue() {
-        return requestQueue;
+        return mQueue;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
         myApplication = this;
-        requestQueue = Volley.newRequestQueue(this);
+        mQueue = Volley.newRequestQueue(this);
         initImageLoader();
     }
 
@@ -90,7 +90,7 @@ public class MyApplication extends Application {
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
-                .bitmapConfig(Bitmap.Config.RGB_565) 
+                .bitmapConfig(Bitmap.Config.RGB_565)
                 .displayer(new FadeInBitmapDisplayer(300))
                 .displayer(new RoundedBitmapDisplayer(8))
                 .build();
