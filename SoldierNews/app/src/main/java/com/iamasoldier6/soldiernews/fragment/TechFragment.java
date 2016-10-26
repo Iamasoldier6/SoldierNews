@@ -113,7 +113,7 @@ public class TechFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        
+
         mRecyclerView.setAdapter(mAdapter);
         //RecyclerViewUtils.setHeaderView(mRecyclerView, headlinesView);
         reloadBtn = (Button) view.findViewById(com.iamasoldier6.soldiernews.R.id.refresh_btn);

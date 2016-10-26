@@ -4,15 +4,15 @@
 
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:radius="8dp" />
-            <solid android:color="@color/colorPrimary" />
+            <corners android:radius="8dp"/>
+            <solid android:color="@color/colorPrimary"/>
         </shape>
     </item>
 
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="8dp" />
-            <solid android:color="@color/secondColor" />
+            <corners android:radius="8dp"/>
+            <solid android:color="@color/secondColor"/>
         </shape>
     </item>
 </selector>

@@ -11,7 +11,8 @@
         <!--<item name="textAppearanceLargePopupMenu">@style/OverflowMenuTextAppearance</item>-->
     </style>
 
-    <style name="OverflowMenuTextAppearance" parent="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large">
+    <style name="OverflowMenuTextAppearance"
+           parent="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large">
         <item name="android:textColor">@color/black</item>
     </style>
 

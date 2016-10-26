@@ -5,15 +5,15 @@
             android:id="@+id/nav_keji"
             android:checked="true"
             android:icon="@drawable/tech"
-            android:title="科技" />
+            android:title="科技"/>
         <item
             android:id="@+id/nav_yule"
             android:icon="@drawable/joy"
-            android:title="娱乐" />
+            android:title="娱乐"/>
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/setting"
-            android:title="设置" />
+            android:title="设置"/>
     </group>
 
     <item android:title="我的">
@@ -21,7 +21,7 @@
             <item
                 android:id="@+id/nav_personal"
                 android:icon="@drawable/ic_menu_user"
-                android:title="个人信息" />
+                android:title="个人信息"/>
         </menu>
     </item>
 </menu>

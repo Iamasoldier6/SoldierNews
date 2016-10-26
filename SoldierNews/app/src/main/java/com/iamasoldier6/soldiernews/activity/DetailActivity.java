@@ -29,9 +29,9 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        webView = (WebView) findViewById(com.iamasoldier6.soldiernews.R.id.webView);
+        webView = (WebView) findViewById(com.iamasoldier6.soldiernews.R.id.webview);
         toolbar = (Toolbar) findViewById(com.iamasoldier6.soldiernews.R.id.toolbar);
-        progressBar = (ProgressBar) findViewById(com.iamasoldier6.soldiernews.R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(com.iamasoldier6.soldiernews.R.id.progressbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

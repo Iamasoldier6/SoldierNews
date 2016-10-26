@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+             xmlns:card_view="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:scaleType="centerInside"
-                tools:text="pic" />
+                tools:text="pic"/>
 
             <TextView
                 android:id="@+id/tv_title"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/image"
                 android:paddingLeft="6dp"
-                tools:text="title" />
+                tools:text="title"/>
 
             <TextView
                 android:id="@+id/tv_date"
@@ -42,7 +42,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:gravity="bottom"
-                tools:text="时间" />
+                tools:text="时间"/>
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

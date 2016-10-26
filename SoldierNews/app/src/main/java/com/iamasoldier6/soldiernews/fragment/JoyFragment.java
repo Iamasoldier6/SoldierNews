@@ -149,7 +149,7 @@ public class JoyFragment extends Fragment {
                 });
             }
         }, new Response.ErrorListener() {
-            
+
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 if (itemList == null) {
