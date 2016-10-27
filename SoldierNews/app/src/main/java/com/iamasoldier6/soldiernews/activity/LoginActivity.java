@@ -20,6 +20,7 @@ import static com.iamasoldier6.soldiernews.R.id.register_btn;
 /**
  * Created by Iamasoldier6 on 2015/11/22.
  */
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DeletableEditText usernameEt, passwordEt;
