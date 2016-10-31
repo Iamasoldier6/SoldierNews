@@ -16,10 +16,10 @@ import com.iamasoldier6.soldiernews.bean.NewsItem;
  */
 public class DetailActivity extends AppCompatActivity {
 
-    private WebView webView;
-    private NewsItem newsItem;
-    private Toolbar toolbar;
-    private ProgressBar progressBar;
+    private WebView mWebView;
+    private NewsItem mNewsItem;
+    private Toolbar mToolbar;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,29 +29,29 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        webView = (WebView) findViewById(com.iamasoldier6.soldiernews.R.id.webview);
-        toolbar = (Toolbar) findViewById(com.iamasoldier6.soldiernews.R.id.toolbar);
-        progressBar = (ProgressBar) findViewById(com.iamasoldier6.soldiernews.R.id.progressbar);
-        setSupportActionBar(toolbar);
+        mWebView = (WebView) findViewById(com.iamasoldier6.soldiernews.R.id.webview);
+        mToolbar = (Toolbar) findViewById(com.iamasoldier6.soldiernews.R.id.toolbar);
+        mProgressBar = (ProgressBar) findViewById(com.iamasoldier6.soldiernews.R.id.progressbar);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Bundle bundle = getIntent().getExtras();
-        newsItem = (NewsItem) bundle.getSerializable(Constant.NEWS_ITEM);
+        mNewsItem = (NewsItem) bundle.getSerializable(Constant.NEWS_ITEM);
 
-        webView.setWebChromeClient(new WebChromeClient() {
+        mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 if (newProgress == 100) {
-                    progressBar.setVisibility(View.INVISIBLE);
+                    mProgressBar.setVisibility(View.INVISIBLE);
                 } else {
-                    if (progressBar.getVisibility() == View.INVISIBLE) {
-                        progressBar.setVisibility(View.VISIBLE);
+                    if (mProgressBar.getVisibility() == View.INVISIBLE) {
+                        mProgressBar.setVisibility(View.VISIBLE);
                     }
-                    progressBar.setProgress(newProgress);
+                    mProgressBar.setProgress(newProgress);
                 }
                 super.onProgressChanged(view, newProgress);
             }
         });
-        webView.loadUrl(newsItem.getUrl());
+        mWebView.loadUrl(mNewsItem.getUrl());
     }
 }
