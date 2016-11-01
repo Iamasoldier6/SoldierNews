@@ -23,7 +23,7 @@ import static com.iamasoldier6.soldiernews.R.id.register_btn;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DeletableEditText usernameEt, passwordEt;
+    private DeletableEditText etUsername, etPassword;
     private Button loginBtn, registerBtn;
     private LoadingDialog dialog;
     private String username, password;
@@ -44,8 +44,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initView() {
-        usernameEt = (DeletableEditText) findViewById(R.id.login_username_et);
-        passwordEt = (DeletableEditText) findViewById(R.id.login_password_et);
+        etUsername = (DeletableEditText) findViewById(R.id.login_username_et);
+        etPassword = (DeletableEditText) findViewById(R.id.login_password_et);
         loginBtn = (Button) findViewById(login_btn);
         registerBtn = (Button) findViewById(register_btn);
         dialog = new LoadingDialog();
@@ -56,15 +56,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private boolean isUserComplete() {
-        username = usernameEt.getText().toString();
-        password = passwordEt.getText().toString();
+        username = etUsername.getText().toString();
+        password = etPassword.getText().toString();
         if (username == null) {
-            usernameEt.setShakeAnimation();
+            etUsername.setShakeAnimation();
             Toast.makeText(this, "请填写用户名", Toast.LENGTH_SHORT);
             return false;
         }
         if (password == null) {
-            passwordEt.setShakeAnimation();
+            etPassword.setShakeAnimation();
             Toast.makeText(this, "请填写密码", Toast.LENGTH_SHORT);
             return false;
         }
