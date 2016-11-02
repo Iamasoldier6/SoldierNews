@@ -24,7 +24,7 @@ import static com.iamasoldier6.soldiernews.R.id.register_btn;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DeletableEditText etUsername, etPassword;
-    private Button loginBtn, registerBtn;
+    private Button btnLogin, btnRegister;
     private LoadingDialog dialog;
     private String username, password;
 
@@ -46,13 +46,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void initView() {
         etUsername = (DeletableEditText) findViewById(R.id.login_username_et);
         etPassword = (DeletableEditText) findViewById(R.id.login_password_et);
-        loginBtn = (Button) findViewById(login_btn);
-        registerBtn = (Button) findViewById(register_btn);
+        btnLogin = (Button) findViewById(login_btn);
+        btnRegister = (Button) findViewById(register_btn);
         dialog = new LoadingDialog();
         dialog.setParams("请稍等...");
 
-        loginBtn.setOnClickListener(this);
-        registerBtn.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
+        btnRegister.setOnClickListener(this);
     }
 
     private boolean isUserComplete() {
@@ -117,10 +117,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case register_btn:
                 if (loginOrRegister == LoginOrRegister.LOGIN) {
                     loginOrRegister = LoginOrRegister.REGISTER;
-                    registerBtn.setText("登录");
+                    btnRegister.setText("登录");
                 } else if (loginOrRegister == LoginOrRegister.REGISTER) {
                     loginOrRegister = LoginOrRegister.LOGIN;
-                    registerBtn.setText("注册帐号");
+                    btnRegister.setText("注册帐号");
                 }
                 updateLayout(loginOrRegister);
                 break;
@@ -129,9 +129,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void updateLayout(LoginOrRegister loginOrRegister) {
         if (loginOrRegister == LoginOrRegister.LOGIN) {
-            loginBtn.setText("登录");
+            btnLogin.setText("登录");
         } else if (loginOrRegister == LoginOrRegister.REGISTER) {
-            loginBtn.setText("注册");
+            btnLogin.setText("注册");
         }
     }
 }
