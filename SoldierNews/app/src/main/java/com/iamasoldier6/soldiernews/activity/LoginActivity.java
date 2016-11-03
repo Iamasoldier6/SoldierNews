@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private DeletableEditText etUsername, etPassword;
     private Button btnLogin, btnRegister;
-    private LoadingDialog dialog;
+    private LoadingDialog mDialog;
     private String username, password;
 
     private enum LoginOrRegister {
@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etPassword = (DeletableEditText) findViewById(R.id.login_password_et);
         btnLogin = (Button) findViewById(login_btn);
         btnRegister = (Button) findViewById(register_btn);
-        dialog = new LoadingDialog();
-        dialog.setParams("请稍等...");
+        mDialog = new LoadingDialog();
+        mDialog.setParams("请稍等...");
 
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
@@ -77,11 +77,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case login_btn:
                 if (loginOrRegister == LoginOrRegister.LOGIN) {
                     if (!isUserComplete()) return;
-                    dialog.show(getFragmentManager(), "loading");
+                    mDialog.show(getFragmentManager(), "loading");
                     UserProxy.login(getApplicationContext(), username, password, new UserProxy.LoginListener() {
                         @Override
                         public void onSuccess() {
-                            dialog.dismiss();
+                            mDialog.dismiss();
                             Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                             setResult(RESULT_OK);
                             // Constant.isLogin = true;
@@ -90,17 +90,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         @Override
                         public void onFailure(String msg) {
-                            dialog.dismiss();
+                            mDialog.dismiss();
                             Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                 } else if (loginOrRegister == LoginOrRegister.REGISTER) {
                     if (!isUserComplete()) return;
-                    dialog.show(getFragmentManager(), "loading...");
+                    mDialog.show(getFragmentManager(), "loading...");
                     UserProxy.register(getApplicationContext(), username, password, new UserProxy.RegsiterListener() {
                         @Override
                         public void onSuccess() {
-                            dialog.dismiss();
+                            mDialog.dismiss();
                             Toast.makeText(LoginActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                             setResult(RESULT_OK);
                             LoginActivity.this.finish();
@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         @Override
                         public void onFailure(String msg) {
-                            dialog.dismiss();
+                            mDialog.dismiss();
                             Toast.makeText(LoginActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
                         }
                     });
