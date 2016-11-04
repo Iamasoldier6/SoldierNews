@@ -14,8 +14,8 @@ import com.iamasoldier6.soldiernews.view.LoadingDialog;
 
 import cn.bmob.v3.Bmob;
 
-import static com.iamasoldier6.soldiernews.R.id.login_btn;
-import static com.iamasoldier6.soldiernews.R.id.register_btn;
+import static com.iamasoldier6.soldiernews.R.id.btn_login;
+import static com.iamasoldier6.soldiernews.R.id.btn_register;
 
 /**
  * Created by Iamasoldier6 on 2015/11/22.
@@ -44,10 +44,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initView() {
-        etUsername = (DeletableEditText) findViewById(R.id.login_username_et);
-        etPassword = (DeletableEditText) findViewById(R.id.login_password_et);
-        btnLogin = (Button) findViewById(login_btn);
-        btnRegister = (Button) findViewById(register_btn);
+        etUsername = (DeletableEditText) findViewById(R.id.et_login_username);
+        etPassword = (DeletableEditText) findViewById(R.id.et_login_password);
+        btnLogin = (Button) findViewById(btn_login);
+        btnRegister = (Button) findViewById(btn_register);
         mDialog = new LoadingDialog();
         mDialog.setParams("请稍等...");
 
@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private boolean isUserComplete() {
         username = etUsername.getText().toString();
         password = etPassword.getText().toString();
+
         if (username == null) {
             etUsername.setShakeAnimation();
             Toast.makeText(this, "请填写用户名", Toast.LENGTH_SHORT);
@@ -74,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case login_btn:
+            case btn_login:
                 if (loginOrRegister == LoginOrRegister.LOGIN) {
                     if (!isUserComplete()) return;
                     mDialog.show(getFragmentManager(), "loading");
@@ -114,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     });
                 }
                 break;
-            case register_btn:
+            case btn_register:
                 if (loginOrRegister == LoginOrRegister.LOGIN) {
                     loginOrRegister = LoginOrRegister.REGISTER;
                     btnRegister.setText("登录");

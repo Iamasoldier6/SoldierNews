@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <com.iamasoldier6.soldiernews.view.DeletableEditText
-            android:id="@+id/login_username_et"
+            android:id="@+id/et_login_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_username"
@@ -30,7 +30,7 @@
             android:textSize="18sp"/>
 
         <com.iamasoldier6.soldiernews.view.DeletableEditText
-            android:id="@+id/login_password_et"
+            android:id="@+id/et_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_password"
@@ -46,7 +46,7 @@
             android:textSize="18sp"/>
 
         <Button
-            android:id="@+id/login_btn"
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -70,7 +70,7 @@
         android:textSize="22sp"/>
 
     <Button
-        android:id="@+id/register_btn"
+        android:id="@+id/btn_register"
         style="?android:buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
