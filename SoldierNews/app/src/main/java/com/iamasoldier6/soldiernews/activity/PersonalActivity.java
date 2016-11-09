@@ -27,7 +27,7 @@ import static com.iamasoldier6.soldiernews.R.id.tv_sex;
 public class PersonalActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvUsername;
-    private Button nickNameBtn;
+    private Button btnNickname;
     private Button sexBtn;
     private Button signatureBtn;
     private Button logoutBtn;
@@ -50,7 +50,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void setListener() {
-        nickNameBtn.setOnClickListener(this);
+        btnNickname.setOnClickListener(this);
         sexBtn.setOnClickListener(this);
         signatureBtn.setOnClickListener(this);
         logoutBtn.setOnClickListener(this);
@@ -66,7 +66,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         tvUsername = (TextView) findViewById(R.id.username);
         nicknameTxt = (TextView) findViewById(tv_nickname);
         sexTxt = (TextView) findViewById(tv_sex);
-        nickNameBtn = (Button) findViewById(R.id.nickname_btn);
+        btnNickname = (Button) findViewById(R.id.nickname_btn);
         sexBtn = (Button) findViewById(R.id.sex_btn);
         signatureBtn = (Button) findViewById(R.id.signature_btn);
         logoutBtn = (Button) findViewById(R.id.logout_btn);
