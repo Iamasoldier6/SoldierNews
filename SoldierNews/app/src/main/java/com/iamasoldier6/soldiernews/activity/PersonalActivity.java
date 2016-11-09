@@ -26,7 +26,7 @@ import static com.iamasoldier6.soldiernews.R.id.tv_sex;
 
 public class PersonalActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView usernameTxt;
+    private TextView tvUsername;
     private Button nickNameBtn;
     private Button sexBtn;
     private Button signatureBtn;
@@ -44,7 +44,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
 
         user = UserProxy.getCurrentUser(this);
         if (user != null) {
-            usernameTxt.setText(user.getUsername());
+            tvUsername.setText(user.getUsername());
         }
         setListener();
     }
@@ -63,7 +63,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         loadingDialog = new LoadingDialog();
 
-        usernameTxt = (TextView) findViewById(R.id.username);
+        tvUsername = (TextView) findViewById(R.id.username);
         nicknameTxt = (TextView) findViewById(tv_nickname);
         sexTxt = (TextView) findViewById(tv_sex);
         nickNameBtn = (Button) findViewById(R.id.nickname_btn);
