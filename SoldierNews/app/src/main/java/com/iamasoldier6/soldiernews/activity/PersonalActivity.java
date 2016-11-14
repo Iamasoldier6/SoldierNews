@@ -29,7 +29,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
     private TextView tvUsername;
     private Button btnNickname;
     private Button btnSex;
-    private Button signatureBtn;
+    private Button btnSignature;
     private Button logoutBtn;
     private TextView nicknameTxt;
     private TextView sexTxt;
@@ -52,7 +52,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
     private void setListener() {
         btnNickname.setOnClickListener(this);
         btnSex.setOnClickListener(this);
-        signatureBtn.setOnClickListener(this);
+        btnSignature.setOnClickListener(this);
         logoutBtn.setOnClickListener(this);
     }
 
@@ -68,7 +68,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         sexTxt = (TextView) findViewById(tv_sex);
         btnNickname = (Button) findViewById(R.id.nickname_btn);
         btnSex = (Button) findViewById(R.id.sex_btn);
-        signatureBtn = (Button) findViewById(R.id.signature_btn);
+        btnSignature = (Button) findViewById(R.id.signature_btn);
         logoutBtn = (Button) findViewById(R.id.logout_btn);
     }
 
