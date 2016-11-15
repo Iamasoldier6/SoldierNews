@@ -30,7 +30,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
     private Button btnNickname;
     private Button btnSex;
     private Button btnSignature;
-    private Button logoutBtn;
+    private Button btnLogout;
     private TextView nicknameTxt;
     private TextView sexTxt;
     private LoadingDialog loadingDialog;
@@ -53,7 +53,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         btnNickname.setOnClickListener(this);
         btnSex.setOnClickListener(this);
         btnSignature.setOnClickListener(this);
-        logoutBtn.setOnClickListener(this);
+        btnLogout.setOnClickListener(this);
     }
 
     private void initViews() {
@@ -69,7 +69,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         btnNickname = (Button) findViewById(R.id.nickname_btn);
         btnSex = (Button) findViewById(R.id.sex_btn);
         btnSignature = (Button) findViewById(R.id.signature_btn);
-        logoutBtn = (Button) findViewById(R.id.logout_btn);
+        btnLogout = (Button) findViewById(R.id.logout_btn);
     }
 
     @Override
