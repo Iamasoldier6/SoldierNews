@@ -31,7 +31,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
     private Button btnSex;
     private Button btnSignature;
     private Button btnLogout;
-    private TextView nicknameTxt;
+    private TextView tvNickname;
     private TextView sexTxt;
     private LoadingDialog loadingDialog;
     public User user;
@@ -64,7 +64,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         loadingDialog = new LoadingDialog();
 
         tvUsername = (TextView) findViewById(R.id.username);
-        nicknameTxt = (TextView) findViewById(tv_nickname);
+        tvNickname = (TextView) findViewById(tv_nickname);
         sexTxt = (TextView) findViewById(tv_sex);
         btnNickname = (Button) findViewById(R.id.nickname_btn);
         btnSex = (Button) findViewById(R.id.sex_btn);
@@ -77,7 +77,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         EditTextDialog editTextDialog = new EditTextDialog();
         switch (v.getId()) {
             case R.id.nickname_btn:
-                editTextDialog.setParams(nicknameTxt.getText().toString(), true, 20);
+                editTextDialog.setParams(tvNickname.getText().toString(), true, 20);
                 editTextDialog.setMyOnClickListener(new EditTextDialog.MyOnClickListener() {
                     @Override
                     public void onClick(String str) {
@@ -88,7 +88,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                             public void onSuccess() {
                                 loadingDialog.dismiss();
                                 Toast.makeText(PersonalActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
-                                nicknameTxt.setText(user.getNickName());
+                                tvNickname.setText(user.getNickName());
                             }
 
                             @Override
