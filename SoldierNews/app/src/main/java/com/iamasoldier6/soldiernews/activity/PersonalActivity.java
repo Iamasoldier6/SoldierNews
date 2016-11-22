@@ -32,7 +32,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
     private Button btnSignature;
     private Button btnLogout;
     private TextView tvNickname;
-    private TextView sexTxt;
+    private TextView tvSex;
     private LoadingDialog loadingDialog;
     public User user;
 
@@ -65,7 +65,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
 
         tvUsername = (TextView) findViewById(R.id.username);
         tvNickname = (TextView) findViewById(tv_nickname);
-        sexTxt = (TextView) findViewById(tv_sex);
+        tvSex = (TextView) findViewById(tv_sex);
         btnNickname = (Button) findViewById(R.id.nickname_btn);
         btnSex = (Button) findViewById(R.id.sex_btn);
         btnSignature = (Button) findViewById(R.id.signature_btn);
@@ -112,7 +112,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                             @Override
                             public void onSuccess() {
                                 loadingDialog.dismiss();
-                                sexTxt.setText(user.getSex());
+                                tvSex.setText(user.getSex());
                                 Toast.makeText(PersonalActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
                             }
 
