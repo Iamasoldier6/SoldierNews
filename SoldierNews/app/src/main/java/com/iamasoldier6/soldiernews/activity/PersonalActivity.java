@@ -66,17 +66,17 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         tvUsername = (TextView) findViewById(R.id.username);
         tvNickname = (TextView) findViewById(tv_nickname);
         tvSex = (TextView) findViewById(tv_sex);
-        btnNickname = (Button) findViewById(R.id.nickname_btn);
-        btnSex = (Button) findViewById(R.id.sex_btn);
-        btnSignature = (Button) findViewById(R.id.signature_btn);
-        btnLogout = (Button) findViewById(R.id.logout_btn);
+        btnNickname = (Button) findViewById(R.id.btn_nickname);
+        btnSex = (Button) findViewById(R.id.btn_sex);
+        btnSignature = (Button) findViewById(R.id.btn_signature);
+        btnLogout = (Button) findViewById(R.id.btn_logout);
     }
 
     @Override
     public void onClick(View v) {
         EditTextDialog editTextDialog = new EditTextDialog();
         switch (v.getId()) {
-            case R.id.nickname_btn:
+            case R.id.btn_nickname:
                 editTextDialog.setParams(tvNickname.getText().toString(), true, 20);
                 editTextDialog.setMyOnClickListener(new EditTextDialog.MyOnClickListener() {
                     @Override
@@ -101,7 +101,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                 });
                 editTextDialog.show(getFragmentManager(), "set_nickname_list_dialog");
                 break;
-            case R.id.sex_btn:
+            case R.id.btn_sex:
                 final String[] str = {"男", "女"};
                 ChooseDialog chooseDialog = new ChooseDialog();
                 chooseDialog.setParams(null, str, new DialogInterface.OnClickListener() {
@@ -126,9 +126,9 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                 });
                 chooseDialog.show(getFragmentManager(), "choose");
                 break;
-            case R.id.signature_btn:
+            case R.id.btn_signature:
                 break;
-            case R.id.logout_btn:
+            case R.id.btn_logout:
                 ConfirmDialog confirmDialog = new ConfirmDialog();
                 confirmDialog.setParams("确认退出登录吗？", new DialogInterface.OnClickListener() {
                     @Override

@@ -35,7 +35,7 @@
 
 
         <Button
-            android:id="@+id/nickname_btn"
+            android:id="@+id/btn_nickname"
             style="?android:borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:textSize="16sp"/>
 
         <Button
-            android:id="@+id/sex_btn"
+            android:id="@+id/btn_sex"
             style="?android:borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
             android:textSize="16sp"/>
 
         <Button
-            android:id="@+id/signature_btn"
+            android:id="@+id/btn_signature"
             style="?android:borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/logout_btn"
+        android:id="@+id/btn_logout"
         style="?android:borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
