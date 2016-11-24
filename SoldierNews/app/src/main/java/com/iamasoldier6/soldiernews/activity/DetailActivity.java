@@ -29,6 +29,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
         mWebView = (WebView) findViewById(com.iamasoldier6.soldiernews.R.id.webview);
         mToolbar = (Toolbar) findViewById(com.iamasoldier6.soldiernews.R.id.toolbar);
         mProgressBar = (ProgressBar) findViewById(com.iamasoldier6.soldiernews.R.id.progressbar);
