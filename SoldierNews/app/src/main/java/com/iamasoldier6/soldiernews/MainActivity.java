@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] drawerTitles = {"科技", "娱乐", "设置"};
     private List<Fragment> fragmentList;
     private Class[] classes = {TechFragment.class, JoyFragment.class, SettingFragment.class};
-    private ImageView photoImg;
+    private ImageView ivPhoto;
     private TextView loginTxt;
 
     @Override
@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupDrawerContent(NavigationView mNavigationView) {
 
         View header = LayoutInflater.from(this).inflate(R.layout.navigation_header, null);
-        photoImg = (ImageView) header.findViewById(R.id.photo_iv);
-        photoImg.setOnClickListener(new View.OnClickListener() {
+        ivPhoto = (ImageView) header.findViewById(R.id.photo_iv);
+        ivPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!UserProxy.isLogin(MainActivity.this)) {
