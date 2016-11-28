@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Fragment> fragmentList;
     private Class[] classes = {TechFragment.class, JoyFragment.class, SettingFragment.class};
     private ImageView ivPhoto;
-    private TextView loginTxt;
+    private TextView tvLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,10 +119,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        loginTxt = (TextView) header.findViewById(R.id.login_tv);
+        tvLogin = (TextView) header.findViewById(R.id.login_tv);
         if (UserProxy.isLogin(this)) {
             User user = UserProxy.getCurrentUser(this);
-            loginTxt.setText(user.getUsername());
+            tvLogin.setText(user.getUsername());
         }
 
         mNavigationView.addHeaderView(header);
