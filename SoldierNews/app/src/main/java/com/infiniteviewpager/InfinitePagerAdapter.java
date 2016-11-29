@@ -15,10 +15,10 @@ public class InfinitePagerAdapter extends PagerAdapter {
     private static final String TAG = "InfinitePagerAdapter";
     private static final boolean DEBUG = true;
 
-    private PagerAdapter adapter;
+    private PagerAdapter mAdapter;
 
     public InfinitePagerAdapter(PagerAdapter adapter) {
-        this.adapter = adapter;
+        this.mAdapter = adapter;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class InfinitePagerAdapter extends PagerAdapter {
      * @return the {@link #getCount()} result of the wrapped adapter
      */
     public int getRealCount() {
-        return adapter.getCount();
+        return mAdapter.getCount();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class InfinitePagerAdapter extends PagerAdapter {
         debug("instantiateItem: virtual position: " + virtualPosition);
 
         // only expose virtual position to the inner adapter
-        return adapter.instantiateItem(container, virtualPosition);
+        return mAdapter.instantiateItem(container, virtualPosition);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class InfinitePagerAdapter extends PagerAdapter {
         debug("destroyItem: virtual position: " + virtualPosition);
 
         // only expose virtual position to the inner adapter
-        adapter.destroyItem(container, virtualPosition, object);
+        mAdapter.destroyItem(container, virtualPosition, object);
     }
 
     /*
@@ -63,63 +63,63 @@ public class InfinitePagerAdapter extends PagerAdapter {
      */
     @Override
     public void finishUpdate(ViewGroup container) {
-        adapter.finishUpdate(container);
+        mAdapter.finishUpdate(container);
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return adapter.isViewFromObject(view, object);
+        return mAdapter.isViewFromObject(view, object);
     }
 
     @Override
     public void restoreState(Parcelable bundle, ClassLoader classLoader) {
-        adapter.restoreState(bundle, classLoader);
+        mAdapter.restoreState(bundle, classLoader);
     }
 
     @Override
     public Parcelable saveState() {
-        return adapter.saveState();
+        return mAdapter.saveState();
     }
 
     @Override
     public void startUpdate(ViewGroup container) {
-        adapter.startUpdate(container);
+        mAdapter.startUpdate(container);
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         int virtualPosition = position % getRealCount();
-        return adapter.getPageTitle(virtualPosition);
+        return mAdapter.getPageTitle(virtualPosition);
     }
 
     @Override
     public float getPageWidth(int position) {
-        return adapter.getPageWidth(position);
+        return mAdapter.getPageWidth(position);
     }
 
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
-        adapter.setPrimaryItem(container, position, object);
+        mAdapter.setPrimaryItem(container, position, object);
     }
 
     @Override
     public void unregisterDataSetObserver(DataSetObserver observer) {
-        adapter.unregisterDataSetObserver(observer);
+        mAdapter.unregisterDataSetObserver(observer);
     }
 
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
-        adapter.registerDataSetObserver(observer);
+        mAdapter.registerDataSetObserver(observer);
     }
 
     @Override
     public void notifyDataSetChanged() {
-        adapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public int getItemPosition(Object object) {
-        return adapter.getItemPosition(object);
+        return mAdapter.getItemPosition(object);
     }
 
     /*

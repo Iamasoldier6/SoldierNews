@@ -33,4 +33,5 @@ public class ConfirmDialog extends DialogFragment {
         builder.setCancelable(true);
         return builder.create();
     }
+
 }
