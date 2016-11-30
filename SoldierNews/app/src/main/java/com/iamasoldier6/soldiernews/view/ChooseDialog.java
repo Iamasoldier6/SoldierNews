@@ -10,6 +10,7 @@ import android.os.Bundle;
  * Created by iamasoldier6 on 2015/11/26.
  */
 public class ChooseDialog extends DialogFragment {
+
     private String title;
     private String[] item;
     private DialogInterface.OnClickListener chooseOnClickListener;

@@ -37,11 +37,12 @@ import java.util.List;
  * Created by iamasoldier6 on 2015/11/22.
  */
 public class TechFragment extends Fragment {
+
     private static final String TAG = "Fragement_keji";
     private SwipeRefreshLayout mSrl;
     private RecyclerView mRecyclerView;
     private MyRecyclerAdapter mAdapter;
-    private Button reloadBtn;
+    private Button btnReload;
     final List<NewsItem> item_list = new ArrayList<>();
     // List<NewsItem> headlineList = new ArrayList<>();
     // 头条内容
@@ -116,8 +117,8 @@ public class TechFragment extends Fragment {
 
         mRecyclerView.setAdapter(mAdapter);
         //RecyclerViewUtils.setHeaderView(mRecyclerView, headlinesView);
-        reloadBtn = (Button) view.findViewById(com.iamasoldier6.soldiernews.R.id.refresh_btn);
-        reloadBtn.setOnClickListener(new View.OnClickListener() {
+        btnReload = (Button) view.findViewById(com.iamasoldier6.soldiernews.R.id.refresh_btn);
+        btnReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadData();
@@ -151,12 +152,12 @@ public class TechFragment extends Fragment {
             }
         }
         if (reloadBtn) {
-            if (this.reloadBtn != null) {
-                this.reloadBtn.setVisibility(View.VISIBLE);
+            if (this.btnReload != null) {
+                this.btnReload.setVisibility(View.VISIBLE);
             }
         } else {
-            if (this.reloadBtn != null) {
-                this.reloadBtn.setVisibility(View.GONE);
+            if (this.btnReload != null) {
+                this.btnReload.setVisibility(View.GONE);
             }
         }
 

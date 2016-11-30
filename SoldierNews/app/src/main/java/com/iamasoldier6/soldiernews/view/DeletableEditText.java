@@ -20,6 +20,7 @@ import android.widget.EditText;
  * TODO
  */
 public class DeletableEditText extends EditText {
+
     private Drawable mRightDrawable;
     private boolean isHasFocus;
 

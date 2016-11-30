@@ -14,6 +14,7 @@ import com.iamasoldier6.soldiernews.R;
  * Created by iamasoldier6 on 2015/11/25.
  */
 public class EditTextDialog extends DialogFragment {
+
     private String[] item = {"确定", "取消"};
     private EditText editText;
     private String editStr;
