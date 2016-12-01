@@ -25,11 +25,11 @@ import java.util.List;
  */
 public class ImagePagerAdapter extends RecyclingPagerAdapter {
 
-    private Context context;
+    private Context mContext;
     private List<NewsItem> list;
 
     public ImagePagerAdapter(Context context, List<NewsItem> list) {
-        this.context = context;
+        this.mContext = context;
         this.list = list;
     }
 
@@ -43,7 +43,7 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
         final ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();
-            ImageView imageView = new ImageView(context);
+            ImageView imageView = new ImageView(mContext);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             convertView = holder.imageView = imageView;
             convertView.setTag(holder);
@@ -83,9 +83,9 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, DetailActivity.class);
+                    Intent intent = new Intent(mContext, DetailActivity.class);
                     intent.putExtra(Constant.NEWS_ITEM, item);
-                    context.startActivity(intent);
+                    mContext.startActivity(intent);
                 }
             });
         }
