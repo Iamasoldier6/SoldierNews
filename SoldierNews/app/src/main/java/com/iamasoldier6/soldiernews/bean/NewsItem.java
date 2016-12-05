@@ -10,10 +10,10 @@ import java.io.Serializable;
  */
 public class NewsItem implements Serializable {
 
-    private String title;//标题
-    private String imageurl;//图片
-    private String date;//日期
-    private String url;//新闻地址
+    private String title; // 标题
+    private String imageurl; // 图片
+    private String date; // 日期
+    private String url; // 新闻地址
 
     public void setUrl(String url) {
         this.url = url;
