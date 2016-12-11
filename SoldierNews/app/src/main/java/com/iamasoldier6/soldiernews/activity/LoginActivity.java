@@ -23,7 +23,7 @@ import static com.iamasoldier6.soldiernews.R.id.btn_register;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DeletableEditText etUsername, etPassword;
+    private DeletableEditText mEtUsername, etPassword;
     private Button btnLogin, btnRegister;
     private LoadingDialog mDialog;
     private String username, password;
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initView() {
-        etUsername = (DeletableEditText) findViewById(R.id.et_login_username);
+        mEtUsername = (DeletableEditText) findViewById(R.id.et_login_username);
         etPassword = (DeletableEditText) findViewById(R.id.et_login_password);
         btnLogin = (Button) findViewById(btn_login);
         btnRegister = (Button) findViewById(btn_register);
@@ -56,11 +56,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private boolean isUserComplete() {
-        username = etUsername.getText().toString();
+        username = mEtUsername.getText().toString();
         password = etPassword.getText().toString();
 
         if (username == null) {
-            etUsername.setShakeAnimation();
+            mEtUsername.setShakeAnimation();
             Toast.makeText(this, "请填写用户名", Toast.LENGTH_SHORT);
             return false;
         }
