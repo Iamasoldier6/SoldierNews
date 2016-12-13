@@ -24,7 +24,7 @@ import static com.iamasoldier6.soldiernews.R.id.btn_register;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DeletableEditText mEtUsername, mEtPassword;
-    private Button btnLogin, btnRegister;
+    private Button mBtnLogin, mBtnRegister;
     private LoadingDialog mDialog;
     private String username, password;
 
@@ -46,13 +46,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void initView() {
         mEtUsername = (DeletableEditText) findViewById(R.id.et_login_username);
         mEtPassword = (DeletableEditText) findViewById(R.id.et_login_password);
-        btnLogin = (Button) findViewById(btn_login);
-        btnRegister = (Button) findViewById(btn_register);
+        mBtnLogin = (Button) findViewById(btn_login);
+        mBtnRegister = (Button) findViewById(btn_register);
         mDialog = new LoadingDialog();
         mDialog.setParams("请稍等...");
 
-        btnLogin.setOnClickListener(this);
-        btnRegister.setOnClickListener(this);
+        mBtnLogin.setOnClickListener(this);
+        mBtnRegister.setOnClickListener(this);
     }
 
     private boolean isUserComplete() {
@@ -118,10 +118,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case btn_register:
                 if (loginOrRegister == LoginOrRegister.LOGIN) {
                     loginOrRegister = LoginOrRegister.REGISTER;
-                    btnRegister.setText("登录");
+                    mBtnRegister.setText("登录");
                 } else if (loginOrRegister == LoginOrRegister.REGISTER) {
                     loginOrRegister = LoginOrRegister.LOGIN;
-                    btnRegister.setText("注册帐号");
+                    mBtnRegister.setText("注册帐号");
                 }
                 updateLayout(loginOrRegister);
                 break;
@@ -130,9 +130,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void updateLayout(LoginOrRegister loginOrRegister) {
         if (loginOrRegister == LoginOrRegister.LOGIN) {
-            btnLogin.setText("登录");
+            mBtnLogin.setText("登录");
         } else if (loginOrRegister == LoginOrRegister.REGISTER) {
-            btnLogin.setText("注册");
+            mBtnLogin.setText("注册");
         }
     }
 }
