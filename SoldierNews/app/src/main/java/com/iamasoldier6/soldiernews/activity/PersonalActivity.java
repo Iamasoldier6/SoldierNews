@@ -27,14 +27,17 @@ import static com.iamasoldier6.soldiernews.R.id.tv_sex;
 public class PersonalActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mTvUsername;
+
     private Button mBtnNickname;
     private Button mBtnSex;
     private Button mBtnSignature;
     private Button mBtnLogout;
+
     private TextView mTvNickname;
     private TextView mTvSex;
-    private LoadingDialog loadingDialog;
-    public User user;
+    
+    private LoadingDialog mLoadingDialog;
+    public User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +45,9 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_personal);
         initViews();
 
-        user = UserProxy.getCurrentUser(this);
-        if (user != null) {
-            mTvUsername.setText(user.getUsername());
+        mUser = UserProxy.getCurrentUser(this);
+        if (mUser != null) {
+            mTvUsername.setText(mUser.getUsername());
         }
         setListener();
     }
@@ -61,7 +64,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("个人信息");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        loadingDialog = new LoadingDialog();
+        mLoadingDialog = new LoadingDialog();
 
         mTvUsername = (TextView) findViewById(R.id.username);
         mTvNickname = (TextView) findViewById(tv_nickname);
@@ -82,18 +85,18 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onClick(String str) {
                         if (str == null) return;
-                        loadingDialog.show(getFragmentManager(), "loading");
-                        UserProxy.upDataInfo(PersonalActivity.this, user, str, null, null, new UserProxy.UpdataInfo() {
+                        mLoadingDialog.show(getFragmentManager(), "loading");
+                        UserProxy.upDataInfo(PersonalActivity.this, mUser, str, null, null, new UserProxy.UpdataInfo() {
                             @Override
                             public void onSuccess() {
-                                loadingDialog.dismiss();
+                                mLoadingDialog.dismiss();
                                 Toast.makeText(PersonalActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
-                                mTvNickname.setText(user.getNickName());
+                                mTvNickname.setText(mUser.getNickName());
                             }
 
                             @Override
                             public void onFailure(String msg) {
-                                loadingDialog.dismiss();
+                                mLoadingDialog.dismiss();
                                 Toast.makeText(PersonalActivity.this, "更新失败", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -107,18 +110,18 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                 chooseDialog.setParams(null, str, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        loadingDialog.show(getFragmentManager(), "loading");
-                        UserProxy.upDataInfo(PersonalActivity.this, user, null, str[which], null, new UserProxy.UpdataInfo() {
+                        mLoadingDialog.show(getFragmentManager(), "loading");
+                        UserProxy.upDataInfo(PersonalActivity.this, mUser, null, str[which], null, new UserProxy.UpdataInfo() {
                             @Override
                             public void onSuccess() {
-                                loadingDialog.dismiss();
-                                mTvSex.setText(user.getSex());
+                                mLoadingDialog.dismiss();
+                                mTvSex.setText(mUser.getSex());
                                 Toast.makeText(PersonalActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(String msg) {
-                                loadingDialog.dismiss();
+                                mLoadingDialog.dismiss();
                                 Toast.makeText(PersonalActivity.this, "更新失败", Toast.LENGTH_SHORT).show();
                             }
                         });
