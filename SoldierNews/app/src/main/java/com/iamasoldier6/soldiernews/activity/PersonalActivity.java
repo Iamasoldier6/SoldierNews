@@ -49,6 +49,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         if (mUser != null) {
             mTvUsername.setText(mUser.getUsername());
         }
+
         setListener();
     }
 
@@ -60,6 +61,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initViews() {
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("个人信息");
@@ -77,7 +79,9 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+
         EditTextDialog editTextDialog = new EditTextDialog();
+
         switch (v.getId()) {
             case R.id.btn_nickname:
                 editTextDialog.setParams(mTvNickname.getText().toString(), true, 20);
@@ -104,6 +108,7 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                 });
                 editTextDialog.show(getFragmentManager(), "set_nickname_list_dialog");
                 break;
+
             case R.id.btn_sex:
                 final String[] str = {"男", "女"};
                 ChooseDialog chooseDialog = new ChooseDialog();
@@ -129,8 +134,10 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
                 });
                 chooseDialog.show(getFragmentManager(), "choose");
                 break;
+
             case R.id.btn_signature:
                 break;
+
             case R.id.btn_logout:
                 ConfirmDialog confirmDialog = new ConfirmDialog();
                 confirmDialog.setParams("确认退出登录吗？", new DialogInterface.OnClickListener() {

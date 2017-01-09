@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.salvage.RecyclingPagerAdapter;
 import com.iamasoldier6.soldiernews.MyApplication;
 import com.iamasoldier6.soldiernews.activity.DetailActivity;
 import com.iamasoldier6.soldiernews.bean.Constant;
 import com.iamasoldier6.soldiernews.bean.NewsItem;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.salvage.RecyclingPagerAdapter;
 
 import java.util.List;
 
@@ -26,16 +26,16 @@ import java.util.List;
 public class ImagePagerAdapter extends RecyclingPagerAdapter {
 
     private Context mContext;
-    private List<NewsItem> list;
+    private List<NewsItem> mList;
 
     public ImagePagerAdapter(Context context, List<NewsItem> list) {
         this.mContext = context;
-        this.list = list;
+        this.mList = list;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return mList.size();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        final NewsItem item = list.get(position);
+        final NewsItem item = mList.get(position);
         if (null != item) {
             holder.imageView.post(new Runnable() {
                 @Override
