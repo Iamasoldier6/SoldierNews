@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView mView;
     private String[] drawerTitles = {"科技", "娱乐", "设置"};
-    private List<Fragment> fragmentList;
+    private List<Fragment> mFragmentList;
     private Class[] classes = {TechFragment.class, JoyFragment.class, SettingFragment.class};
     private ImageView ivPhoto;
     private TextView tvLogin;
@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragmentList = new ArrayList<>();
+        mFragmentList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            fragmentList.add(null);
+            mFragmentList.add(null);
         }
         initView();
         selectItem(0);
@@ -56,21 +56,21 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
-        for (Fragment fragment : fragmentList) {
+        for (Fragment fragment : mFragmentList) {
             if (fragment != null) {
                 fragmentTransaction.hide(fragment);
             }
         }
 
         Fragment fragment;
-        if (fragmentList.get(position) == null) {
+        if (mFragmentList.get(position) == null) {
             Bundle bundle = new Bundle();
             bundle.putString(Constant.TITLE, drawerTitles[position]);
             fragment = Fragment.instantiate(this, classes[position].getName(), bundle);
-            fragmentList.set(position, fragment);
+            mFragmentList.set(position, fragment);
             fragmentTransaction.add(R.id.main, fragment);
         } else {
-            fragment = fragmentList.get(position);
+            fragment = mFragmentList.get(position);
             fragmentTransaction.show(fragment);
         }
         fragmentTransaction.commit();

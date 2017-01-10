@@ -41,6 +41,7 @@ public class MyApplication extends Application {
     }
 
     private void initImageLoader() {
+
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .threadPriority(Thread.NORM_PRIORITY - 1)
                 .denyCacheImageMultipleSizesInMemory()
@@ -57,6 +58,7 @@ public class MyApplication extends Application {
     }
 
     public DisplayImageOptions getOptions() {
+
         return new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.drawable.app_logo)
                 .showImageForEmptyUri(R.drawable.app_logo)
@@ -70,6 +72,7 @@ public class MyApplication extends Application {
     }
 
     public DisplayImageOptions getOptions(int defaultImgResourceId) {
+
         return new DisplayImageOptions.Builder()
                 .showImageOnLoading(defaultImgResourceId)
                 .showImageForEmptyUri(defaultImgResourceId)
@@ -83,6 +86,7 @@ public class MyApplication extends Application {
     }
 
     public DisplayImageOptions getOptionsWithRoundedCorner() {
+
         return new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.drawable.app_logo)
                 .showImageForEmptyUri(R.drawable.app_logo)
@@ -95,4 +99,5 @@ public class MyApplication extends Application {
                 .displayer(new RoundedBitmapDisplayer(8))
                 .build();
     }
+
 }
