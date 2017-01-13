@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView mView;
-    private String[] drawerTitles = {"科技", "娱乐", "设置"};
+    private String[] mDrawerTitles = {"科技", "娱乐", "设置"};
     private List<Fragment> mFragmentList;
     private Class[] classes = {TechFragment.class, JoyFragment.class, SettingFragment.class};
     private ImageView mIvPhoto;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment;
         if (mFragmentList.get(position) == null) {
             Bundle bundle = new Bundle();
-            bundle.putString(Constant.TITLE, drawerTitles[position]);
+            bundle.putString(Constant.TITLE, mDrawerTitles[position]);
             fragment = Fragment.instantiate(this, classes[position].getName(), bundle);
             mFragmentList.set(position, fragment);
             fragmentTransaction.add(R.id.main, fragment);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.show(fragment);
         }
         fragmentTransaction.commit();
-        getSupportActionBar().setTitle(drawerTitles[position]);
+        getSupportActionBar().setTitle(mDrawerTitles[position]);
     }
 
     private void initView() {
