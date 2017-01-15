@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView mView;
     private String[] mDrawerTitles = {"科技", "娱乐", "设置"};
     private List<Fragment> mFragmentList;
-    private Class[] classes = {TechFragment.class, JoyFragment.class, SettingFragment.class};
+    private Class[] mClasses = {TechFragment.class, JoyFragment.class, SettingFragment.class};
     private ImageView mIvPhoto;
     private TextView mTvLogin;
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         if (mFragmentList.get(position) == null) {
             Bundle bundle = new Bundle();
             bundle.putString(Constant.TITLE, mDrawerTitles[position]);
-            fragment = Fragment.instantiate(this, classes[position].getName(), bundle);
+            fragment = Fragment.instantiate(this, mClasses[position].getName(), bundle);
             mFragmentList.set(position, fragment);
             fragmentTransaction.add(R.id.main, fragment);
         } else {
@@ -131,10 +131,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.nav_keji:
+                    case R.id.nav_tech:
                         selectItem(0);
                         break;
-                    case R.id.nav_yule:
+                    case R.id.nav_joy:
                         selectItem(1);
                         break;
                     case R.id.nav_settings:
