@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private boolean isUserComplete() {
+
         username = mEtUsername.getText().toString();
         password = mEtPassword.getText().toString();
 

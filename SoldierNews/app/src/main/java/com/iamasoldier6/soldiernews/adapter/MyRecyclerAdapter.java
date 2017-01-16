@@ -22,12 +22,12 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
 
     private Context mContext;
     private List<NewsItem> mData;
-    private LayoutInflater mInflater;
+    private LayoutInflater mLayoutInflater;
 
     public MyRecyclerAdapter(Context context, List list) {
         mContext = context;
         mData = list;
-        mInflater = LayoutInflater.from(mContext);
+        mLayoutInflater = LayoutInflater.from(mContext);
     }
 
     public interface OnItemClickListener {
@@ -47,7 +47,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_list, parent, false);
+        View view = mLayoutInflater.inflate(R.layout.item_list, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
