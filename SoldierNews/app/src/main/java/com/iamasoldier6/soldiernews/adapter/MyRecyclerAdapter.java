@@ -58,7 +58,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mTvTitle.setText(mData.get(position).getTitle());
         holder.tv_date.setText(mData.get(position).getDate());
-        ImageLoader.getInstance().displayImage(mData.get(position).getImageurl(), holder.image, MyApplication.getInstance().getOptionsWithRoundedCorner());
+        ImageLoader.getInstance().displayImage(mData.get(position).getImageurl(), holder.mIvPicture, MyApplication.getInstance().getOptionsWithRoundedCorner());
 
         if (mOnItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +78,13 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mTvTitle;
-        ImageView image;
+        ImageView mIvPicture;
         TextView tv_date;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mTvTitle = (TextView) itemView.findViewById(tv_title);
-            image = (ImageView) itemView.findViewById(R.id.image);
+            mIvPicture = (ImageView) itemView.findViewById(R.id.image);
             tv_date = (TextView) itemView.findViewById(R.id.tv_date);
         }
     }
