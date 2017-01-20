@@ -23,12 +23,12 @@ import static com.iamasoldier6.soldiernews.R.id.tv_title;
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<NewsItem> mData;
+    private List<NewsItem> mNewsList;
     private LayoutInflater mLayoutInflater;
 
-    public MyRecyclerAdapter(Context context, List list) {
+    public MyRecyclerAdapter(Context context, List newsList) {
         mContext = context;
-        mData = list;
+        mNewsList = newsList;
         mLayoutInflater = LayoutInflater.from(mContext);
     }
 
@@ -43,7 +43,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
     }
 
     public void updateData(List<NewsItem> data) {
-        this.mData = data;
+        this.mNewsList = data;
         this.notifyDataSetChanged();
     }
 
@@ -56,9 +56,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.mTvTitle.setText(mData.get(position).getTitle());
-        holder.mTvDate.setText(mData.get(position).getDate());
-        ImageLoader.getInstance().displayImage(mData.get(position).getImageurl(), holder.mIvPicture, MyApplication.getInstance().getOptionsWithRoundedCorner());
+        holder.mTvTitle.setText(mNewsList.get(position).getTitle());
+        holder.mTvDate.setText(mNewsList.get(position).getDate());
+        ImageLoader.getInstance().displayImage(mNewsList.get(position).getImageurl(), holder.mIvPicture, MyApplication.getInstance().getOptionsWithRoundedCorner());
 
         if (mOnItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +72,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mNewsList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
