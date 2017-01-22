@@ -19,7 +19,7 @@
             android:padding="6dp">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/iv_image"
                 android:layout_width="96dp"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
@@ -30,7 +30,7 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/image"
+                android:layout_toRightOf="@+id/iv_image"
                 android:paddingLeft="6dp"
                 tools:text="title"/>
 
