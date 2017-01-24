@@ -25,18 +25,13 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
     private Context mContext;
     private List<NewsItem> mNewsList;
     private LayoutInflater mLayoutInflater;
+    private OnItemClickListener mOnItemClickListener;
 
     public MyRecyclerAdapter(Context context, List newsList) {
         mContext = context;
         mNewsList = newsList;
         mLayoutInflater = LayoutInflater.from(mContext);
     }
-
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
-    }
-
-    private OnItemClickListener mOnItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.mOnItemClickListener = listener;
@@ -88,4 +83,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
             mTvDate = (TextView) itemView.findViewById(R.id.tv_date);
         }
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
 }

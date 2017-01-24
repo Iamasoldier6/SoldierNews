@@ -11,19 +11,19 @@ import android.view.View;
  */
 public class MinFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private FragmentPagerAdapter adapter;
+    private FragmentPagerAdapter mAdapter;
 
     public MinFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
     public void setAdapter(FragmentPagerAdapter adapter) {
-        this.adapter = adapter;
+        this.mAdapter = adapter;
     }
 
     @Override
     public int getCount() {
-        int realCount = adapter.getCount();
+        int realCount = mAdapter.getCount();
         if (realCount == 1) {
             return 4;
         } else if (realCount == 2 || realCount == 3) {
@@ -35,7 +35,7 @@ public class MinFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return adapter.isViewFromObject(view, object);
+        return mAdapter.isViewFromObject(view, object);
     }
 
     /**
@@ -48,13 +48,13 @@ public class MinFragmentPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        int realCount = adapter.getCount();
+        int realCount = mAdapter.getCount();
         if (realCount == 1) {
-            return adapter.getItem(0);
+            return mAdapter.getItem(0);
         } else if (realCount == 2 || realCount == 3) {
-            return adapter.getItem(position % realCount);
+            return mAdapter.getItem(position % realCount);
         } else {
-            return adapter.getItem(position);
+            return mAdapter.getItem(position);
         }
     }
 }
