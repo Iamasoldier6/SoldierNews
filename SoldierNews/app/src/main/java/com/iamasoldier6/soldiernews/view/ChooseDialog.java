@@ -12,20 +12,20 @@ import android.os.Bundle;
 public class ChooseDialog extends DialogFragment {
 
     private String mTitle;
-    private String[] item;
-    private DialogInterface.OnClickListener chooseOnClickListener;
+    private String[] mItem;
+    private DialogInterface.OnClickListener mOnClickListener;
 
     public void setParams(String title, String[] item, DialogInterface.OnClickListener chooseOnClickListener) {
         this.mTitle = title;
-        this.item = item;
-        this.chooseOnClickListener = chooseOnClickListener;
+        this.mItem = item;
+        this.mOnClickListener = chooseOnClickListener;
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         if (mTitle != null) builder.setTitle(mTitle);
-        if (item != null) builder.setItems(item, chooseOnClickListener);
+        if (mItem != null) builder.setItems(mItem, mOnClickListener);
         builder.setCancelable(true);
         return builder.create();
     }
