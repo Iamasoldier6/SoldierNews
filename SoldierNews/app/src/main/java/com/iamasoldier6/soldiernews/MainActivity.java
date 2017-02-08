@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Fragment fragment;
+
         if (mFragmentList.get(position) == null) {
             Bundle bundle = new Bundle();
             bundle.putString(Constant.TITLE, mDrawerTitles[position]);
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onDrawerClosed(drawerView);
             }
         };
+
         mLayout.setDrawerListener(mDrawerToggle);
         setupDrawerContent(mView);
     }
@@ -119,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
         mTvLogin = (TextView) header.findViewById(R.id.login_tv);
         if (UserProxy.isLogin(this)) {
             User user = UserProxy.getCurrentUser(this);

@@ -10,16 +10,16 @@ import android.os.Bundle;
  */
 public class LoadingDialog extends DialogFragment {
 
-    private String title;
-    private String message;
+    private String mTitle;
+    private String mMessage;
 
     public void setParams(String message) {
         setParams(null, message);
     }
 
     public void setParams(String title, String message) {
-        this.title = title;
-        this.message = message;
+        this.mTitle = title;
+        this.mMessage = message;
     }
 
     @Override
@@ -28,8 +28,8 @@ public class LoadingDialog extends DialogFragment {
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setIndeterminate(true);
 
-        if (title != null) progressDialog.setTitle(title);
-        if (message != null) progressDialog.setMessage(message);
+        if (mTitle != null) progressDialog.setTitle(mTitle);
+        if (mMessage != null) progressDialog.setMessage(mMessage);
         progressDialog.setCanceledOnTouchOutside(false);
 
         return progressDialog;
