@@ -33,7 +33,7 @@ public class HeadlinesView extends FrameLayout {
     private List<NewsItem> list = new ArrayList<>();//数据集
     private InfiniteViewPager mViewPager;
     private PagerAdapter mPagerAdapter;
-    private TextView titleTv;
+    private TextView mTitleTv;
     private TextView numberTv;
 
     private Handler mHandler;
@@ -51,7 +51,7 @@ public class HeadlinesView extends FrameLayout {
         mPagerAdapter = new InfinitePagerAdapter(new ImagePagerAdapter(getContext(), list));
         mViewPager.setAdapter(mPagerAdapter);
 
-        titleTv.setText(list.get(0 % list.size()).getTitle());
+        mTitleTv.setText(list.get(0 % list.size()).getTitle());
         numberTv.setText(new StringBuilder().append((0) % list.size() + 1).append("/")
                 .append(list.size()));
 
@@ -125,7 +125,7 @@ public class HeadlinesView extends FrameLayout {
 
             @Override
             public void onPageSelected(int position) {
-                titleTv.setText(list.get(position % list.size()).getTitle());
+                mTitleTv.setText(list.get(position % list.size()).getTitle());
                 numberTv.setText(new StringBuilder().append((position) % list.size() + 1).append("/")
                         .append(list.size()));
             }
@@ -140,7 +140,7 @@ public class HeadlinesView extends FrameLayout {
 
     private void findViews() {
         mViewPager = (InfiniteViewPager) findViewById(R.id.headlines_view_vp);
-        titleTv = (TextView) findViewById(R.id.headlines_view_title_tv);
+        mTitleTv = (TextView) findViewById(R.id.headlines_view_title_tv);
         numberTv = (TextView) findViewById(R.id.headlines_view_number_tv);
     }
 
