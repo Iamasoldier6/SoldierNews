@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private DeletableEditText mEtUsername, mEtPassword;
     private Button mBtnLogin, mBtnRegister;
     private LoadingDialog mDialog;
-    private String username, password;
+    private String mUsername, mPassword;
 
     private enum LoginOrRegister {
         LOGIN, REGISTER
@@ -57,15 +57,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private boolean isUserComplete() {
 
-        username = mEtUsername.getText().toString();
-        password = mEtPassword.getText().toString();
+        mUsername = mEtUsername.getText().toString();
+        mPassword = mEtPassword.getText().toString();
 
-        if (username == null) {
+        if (mUsername == null) {
             mEtUsername.setShakeAnimation();
             Toast.makeText(this, "请填写用户名", Toast.LENGTH_SHORT);
             return false;
         }
-        if (password == null) {
+        if (mPassword == null) {
             mEtPassword.setShakeAnimation();
             Toast.makeText(this, "请填写密码", Toast.LENGTH_SHORT);
             return false;
@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (loginOrRegister == LoginOrRegister.LOGIN) {
                     if (!isUserComplete()) return;
                     mDialog.show(getFragmentManager(), "loading");
-                    UserProxy.login(getApplicationContext(), username, password, new UserProxy.LoginListener() {
+                    UserProxy.login(getApplicationContext(), mUsername, mPassword, new UserProxy.LoginListener() {
                         @Override
                         public void onSuccess() {
                             mDialog.dismiss();
@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 } else if (loginOrRegister == LoginOrRegister.REGISTER) {
                     if (!isUserComplete()) return;
                     mDialog.show(getFragmentManager(), "loading...");
-                    UserProxy.register(getApplicationContext(), username, password, new UserProxy.RegsiterListener() {
+                    UserProxy.register(getApplicationContext(), mUsername, mPassword, new UserProxy.RegsiterListener() {
                         @Override
                         public void onSuccess() {
                             mDialog.dismiss();
