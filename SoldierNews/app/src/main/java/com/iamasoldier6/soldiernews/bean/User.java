@@ -7,7 +7,7 @@ import cn.bmob.v3.BmobUser;
  */
 public class User extends BmobUser {
 
-    private String nickName;
+    private String mNickName;
     private String sex;
     private String signature;
 
@@ -28,10 +28,10 @@ public class User extends BmobUser {
     }
 
     public String getNickName() {
-        return nickName;
+        return mNickName;
     }
 
     public void setNickName(String nickName) {
-        this.nickName = nickName;
+        this.mNickName = nickName;
     }
 }
