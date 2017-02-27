@@ -8,15 +8,15 @@ import cn.bmob.v3.BmobUser;
 public class User extends BmobUser {
 
     private String mNickName;
-    private String sex;
+    private String mSex;
     private String signature;
 
     public String getSex() {
-        return sex;
+        return mSex;
     }
 
     public void setSex(String sex) {
-        this.sex = sex;
+        this.mSex = sex;
     }
 
     public String getSignature() {
