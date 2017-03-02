@@ -9,7 +9,7 @@ public class User extends BmobUser {
 
     private String mNickName;
     private String mSex;
-    private String signature;
+    private String mSignature;
 
     public String getSex() {
         return mSex;
@@ -20,11 +20,11 @@ public class User extends BmobUser {
     }
 
     public String getSignature() {
-        return signature;
+        return mSignature;
     }
 
     public void setSignature(String signature) {
-        this.signature = signature;
+        this.mSignature = signature;
     }
 
     public String getNickName() {
