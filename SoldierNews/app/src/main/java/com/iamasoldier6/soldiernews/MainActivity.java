@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
     private DrawerLayout mLayout;
-    private ActionBarDrawerToggle mDrawerToggle;
+    private ActionBarDrawerToggle mToggle;
     private NavigationView mView;
     private String[] mDrawerTitles = {"科技", "娱乐", "设置"};
     private List<Fragment> mFragmentList;
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(R.drawable.menu);
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, mLayout, mToolbar, R.string.open, R.string.close) {
+        mToggle = new ActionBarDrawerToggle(this, mLayout, mToolbar, R.string.open, R.string.close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        mLayout.setDrawerListener(mDrawerToggle);
+        mLayout.setDrawerListener(mToggle);
         setupDrawerContent(mView);
     }
 
