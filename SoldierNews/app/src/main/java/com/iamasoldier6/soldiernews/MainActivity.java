@@ -3,11 +3,11 @@ package com.iamasoldier6.soldiernews;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -21,8 +21,8 @@ import com.iamasoldier6.soldiernews.bean.Constant;
 import com.iamasoldier6.soldiernews.bean.User;
 import com.iamasoldier6.soldiernews.biz.UserProxy;
 import com.iamasoldier6.soldiernews.fragment.JoyFragment;
-import com.iamasoldier6.soldiernews.fragment.TechFragment;
 import com.iamasoldier6.soldiernews.fragment.SettingFragment;
+import com.iamasoldier6.soldiernews.fragment.TechFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,17 +62,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        Fragment fragment;
+        Fragment mFragment;
 
         if (mFragmentList.get(position) == null) {
             Bundle bundle = new Bundle();
             bundle.putString(Constant.TITLE, mDrawerTitles[position]);
-            fragment = Fragment.instantiate(this, mClasses[position].getName(), bundle);
-            mFragmentList.set(position, fragment);
-            fragmentTransaction.add(R.id.main, fragment);
+            mFragment = Fragment.instantiate(this, mClasses[position].getName(), bundle);
+            mFragmentList.set(position, mFragment);
+            fragmentTransaction.add(R.id.main, mFragment);
         } else {
-            fragment = mFragmentList.get(position);
-            fragmentTransaction.show(fragment);
+            mFragment = mFragmentList.get(position);
+            fragmentTransaction.show(mFragment);
         }
         fragmentTransaction.commit();
         getSupportActionBar().setTitle(mDrawerTitles[position]);
@@ -154,3 +154,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+
+
+
+
+
+
+
